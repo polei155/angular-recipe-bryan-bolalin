@@ -1,0 +1,59 @@
+.recipe-details-container{
+    padding: 0 0 50px 0;
+
+    button{
+        margin-bottom: 15px;
+    }
+    .edit-button{
+        margin-left: 10px;
+    }
+    .recipe-details-box{
+        mat-card-title{
+            text-align: center;
+        }
+        mat-card-content{
+            img{
+                display: block;
+                width: 50%;
+                margin: 20px auto;
+                border-radius: 3%;
+            }
+            .ingredients, .specials, .directions{
+                margin-top: 20px;
+            }
+            .ingredients{
+                background-color: #b71540;
+                border-radius: 5px;
+                padding: 15px;
+                color: white;
+
+                .ingredients-box{
+                    text-transform: capitalize;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    @media screen and (max-width: 576px){
+                        justify-content: left;
+                        align-items: flex-start;
+                        flex-direction: column;
+                    }
+                }
+                .ingredient-list{
+                    margin: 0 10px 10px 0;
+                    flex-wrap: wrap;
+                    width: 140px;
+                    p{
+                        margin: 0;
+                    }
+                }
+            }
+            .specials{
+                p{
+                    text-transform: capitalize;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.add-recipe-container{
+    padding-bottom: 50px;
+    form{
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+
+        .ingredients{
+            .ingredient-fields{
+                mat-form-field{
+                    margin-right: 10px;
+                }
+                em{
+                    cursor: pointer;
+                    color: red;
+                }
+                .ingrediend-row{
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+        .directions{
+            margin-top: 40px;
+            .directions-box{
+                mat-form-field{
+                    width: 100%;
+                }
+                em{
+                    cursor: pointer;
+                    color: red;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        button{
+            text-align: left;
+        }
+    }
+}

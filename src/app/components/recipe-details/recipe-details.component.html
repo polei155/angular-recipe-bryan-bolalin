@@ -1,0 +1,42 @@
+<div class="recipe-details-container container">
+    <button mat-flat-button color="primary" (click)="back()">Back</button>
+    <!-- <button mat-flat-button class="ml-2" color="basic" (click)="editRecipe()">Edit</button> -->
+    <mat-card class="recipe-details-box">
+        <mat-card-title>
+            {{recipe.recipeDatas.title}}
+        </mat-card-title>
+        <mat-card-content>
+            <ng-container *ngIf="recipe.recipeDatas.images">
+                <img src="http://localhost:3001{{recipe.recipeDatas.images.medium}}" alt="">
+            </ng-container>
+            <p class="text-center mt-20">{{recipe.recipeDatas.description}}</p>
+            <p class="text-center"><strong>Cook Time:</strong> {{recipe.recipeDatas.cookTime}}</p>
+
+            <div class="ingredients">
+                <h2>Ingredients</h2>
+                <div class="ingredients-box">
+                    <div class="ingredient-list" *ngFor="let ingredient of recipe.recipeDatas.ingredients">
+                        <p><strong>{{ingredient.name}}</strong></p>
+                        <span>{{ingredient.amount}} {{ingredient.measurement}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="directions">
+                <h2>Directions</h2>
+                <ol>
+                    <li *ngFor="let direction of recipe.recipeDatas.directions">{{direction.instructions}}</li>
+                </ol>
+            </div>
+
+            <ng-container *ngIf="recipe.recipeDatas.specials">
+                <div class="specials">
+                    <h2>Specials</h2>
+                    <p>{{recipe.recipeDatas.specials.title}}</p>
+                    <p>{{recipe.recipeDatas.specials.text}}</p>
+                    <p>{{recipe.recipeDatas.specials.type}}</p>
+                </div>
+            </ng-container>
+        </mat-card-content>
+    </mat-card>
+</div>

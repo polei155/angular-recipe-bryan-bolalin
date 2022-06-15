@@ -1,0 +1,21 @@
+<div class="home-container">
+    <div class="recipe-box">
+        <h2>Recipe List</h2>
+        <button mat-flat-button class="add-button" color="primary" (click)="addRecipe()">Add Recipe</button>
+        <div class="recipe-cards-container">
+            <mat-card *ngFor="let recipe of recipes">
+                <mat-card-content>
+                    <mat-card-subtitle>
+                        {{recipe.title}}
+                    </mat-card-subtitle>
+                    <div class="img-container">
+                        <ng-container *ngIf="recipe.images">
+                            <img src="http://localhost:3001{{recipe.images.small}}">
+                        </ng-container>
+                    </div>
+                </mat-card-content>
+                <button mat-flat-button color="primary" (click)="seeRecipe(recipe, true)">See more</button>
+            </mat-card>
+        </div>
+    </div>
+</div>

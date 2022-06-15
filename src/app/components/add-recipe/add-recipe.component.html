@@ -1,0 +1,95 @@
+<div class="add-recipe-container container">
+    <form [formGroup]="recipeForm">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Recipe Name</mat-label>
+            <input type="text" matInput formControlName="title">
+            <mat-error *ngIf="recipeForm.hasError('required')">
+              Recipe name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Cook Time</mat-label>
+            <input type="text" matInput formControlName="cookTime" >
+            <mat-error *ngIf="recipeForm.hasError('required')">
+              Cook time name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Description</mat-label>
+            <input type="text" matInput formControlName="description" >
+            <mat-error *ngIf="recipeForm.hasError('required')">
+              Description name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Prep Time</mat-label>
+            <input type="number" matInput formControlName="prepTime" >
+            <mat-error *ngIf="recipeForm.hasError('required')">
+              Preptime name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Servings</mat-label>
+            <input type="number" matInput formControlName="servings" >
+            <mat-error *ngIf="recipeForm.hasError('required')">
+              Serving is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <div class="ingredients">
+          <h2>Ingredients</h2>
+          <div class="ingredient-fields">
+            <ng-container formArrayName="ingredients">
+              <ng-container *ngFor="let ingredient of ingredientControl?.controls; let i = index" formGroupName="{{i}}">
+                <div class="ingrediend-row">
+                  <mat-form-field class="example-full-width" appearance="fill" [style.width.px]=130>
+                    <mat-label>Ingredient Name</mat-label>
+                    <input type="text" matInput formControlName="name">
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill" [style.width.px]=130>
+                  <mat-label>Measurement</mat-label>
+                  <mat-select formControlName="measurement">
+                    <mat-option *ngFor="let measure of measurements" [value]="measure" >
+                      {{measure}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill" [style.width.px]=130>
+                    <mat-label>Amount</mat-label>
+                    <input type="number" matInput formControlName="amount">
+                </mat-form-field>
+                <em class="ph-minus-circle" *ngIf="i > 0" (click)="remove(i, 'ingredient')"></em>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+          <button mat-button color="primary" type="button" (click)="createIngredientArray()">Add Ingredient</button>
+        </div>
+
+        <div class="directions">
+          <h2>Directions</h2>
+          <ng-container formArrayName="directions">
+            <div class="directions-box">
+              <ng-container *ngFor="let ingredient of directionsControl?.controls; let i = index" formGroupName="{{i}}">
+                <mat-slide-toggle formControlName="optional">Optional</mat-slide-toggle>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Instruction</mat-label>
+                  <textarea matInput rows="5" cols="80" formControlName="instructions"> </textarea>
+              </mat-form-field>
+              <em class="ph-minus-circle" *ngIf="i > 0" (click)="remove(i, 'direction')">Remove</em>
+              <br>
+              </ng-container>
+            </div>
+          </ng-container>
+          <button mat-button color="primary" type="button" (click)="createDirectionsArray()">Add Directions</button>
+        </div>
+
+
+        <br>
+        <button mat-button color="primary" type="button" [disabled]="!recipeForm.valid" (click)="onsubmit(recipeForm.value)">Submit</button>
+    </form>
+</div>

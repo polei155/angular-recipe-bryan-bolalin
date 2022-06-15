@@ -1,0 +1,16 @@
+<div class="recipe-dialog-container">
+    <div class="dialog-box">
+        <h2>{{recipe.recipeDatas.title}}</h2>
+        <img src="http://localhost:3001{{recipe.recipeDatas.images.medium}}" alt="">
+        <p>{{recipe.recipeDatas.description}}</p>
+        <ol>
+            <li *ngFor="let direction of recipe.recipeDatas.directions">{{direction.instructions}}</li>
+        </ol>
+
+        <div class="specials">
+            {{recipe.recipeDatas.specials.title}} <br>
+            {{recipe.recipeDatas.specials.text}} <br>
+            {{recipe.recipeDatas.specials.type}} <br>
+        </div>
+    </div>
+</div>

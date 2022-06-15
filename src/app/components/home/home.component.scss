@@ -1,0 +1,43 @@
+.home-container{
+    padding: 20px 50px;
+
+    @media screen and (max-width: 576px){
+        padding: 20px 15px;
+    }
+
+    .recipe-box{
+        padding: 20px ;
+        background-color: #f7f7f7;
+        border-radius: 5px;
+        .recipe-cards-container{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            mat-card{
+                margin: 20px 10px;
+                .img-container{
+                    height: 150px;
+                }
+                mat-card-content{
+                    mat-card-subtitle{
+                        font-size: 16px;
+                    }
+                }
+                .add-button{
+                    margin-left: 10px;
+                }
+            }
+
+            @media screen and (max-width: 576px){
+                justify-content: center;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px){
+    /* some CSS here */
+    .recipe-cards-container{
+
+    }
+}
